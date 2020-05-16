@@ -1,0 +1,152 @@
+@import './resets';
+@import './variables';
+
+@function font-weights($weight-name) {
+	@return map-get($font-weights, $weight-name);
+}
+
+@mixin grid($gap) {
+	display: grid;
+	gap: $gap;
+}
+
+@mixin tablet {
+	@media screen and (min-width: $tablet) {
+		@content;
+	}
+}
+
+@mixin PC {
+	@media screen and (min-width: $PC) {
+		@content;
+	}
+}
+
+@mixin Desktop {
+	@media screen and (min-width: $Desktop) {
+		@content;
+	}
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.2;
+	font-weight: font-weights(extra-light);
+	background-color: $neutral-very-light-grey;
+	color: $neutral-greyish-blue;
+}
+
+.container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.layout {
+	padding: 2rem;
+}
+
+.header {
+	max-width: 50rem;
+	text-align: center;
+}
+
+.heading__main {
+	font-size: 2.75rem;
+	margin: 2rem 0;
+	font-weight: font-weights(extra-light);
+	color: $neutral-very-dark-blue;
+
+	& span {
+		font-weight: font-weights(semi-bold);
+		color: $neutral-very-dark-blue;
+		display: block;
+	}
+
+	+ p {
+		text-align: center;
+		font-weight: 400;
+		font-size: 1.9rem;
+	}
+}
+
+.card__container {
+	@include grid(2rem);
+
+	&-column {
+		@include grid(2rem);
+
+		@include Desktop() {
+			@include grid(4rem);
+		}
+	}
+
+	.card {
+		max-width: 35rem;
+		padding: 2.5rem;
+		border-radius: 1rem;
+		box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.7),
+			0px 23px 39px -25px rgba(0, 0, 0, 0.25);
+		position: relative;
+		overflow: hidden;
+		margin: auto;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 0.5rem;
+			right: 0;
+			top: 0;
+			height: 0.7rem;
+		}
+
+		&__cyan::before {
+			background-color: $primary-cyan;
+		}
+
+		&__orange::before {
+			background-color: $primary-orange;
+		}
+
+		&__yellow::before {
+			background-color: $primary-yellow;
+		}
+
+		&__blue::before {
+			background-color: $primary-blue;
+		}
+
+		.heading__secondary {
+			color: $neutral-very-dark-blue;
+			margin: 1rem 0;
+			font-size: 2rem;
+		}
+
+		p {
+			font-weight: font-weights(regular);
+		}
+
+		.icon {
+			margin-top: 3rem;
+			margin-left: auto;
+		}
+	}
+
+	@include tablet() {
+		grid-template-columns: 1fr 1fr;
+
+		> :last-child {
+			margin-top: -12rem;
+		}
+	}
+
+	@include PC() {
+		grid-template-columns: 1fr 1fr 1fr;
+
+		> :last-child {
+			margin: auto;
+		}
+	}
+}
