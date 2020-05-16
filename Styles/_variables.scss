@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+$primary-orange: hsl(0, 78%, 62%);
+$primary-cyan: hsl(180, 62%, 55%);
+$primary-yellow: hsl(34, 97%, 64%);
+$primary-blue: hsl(212, 86%, 64%);
+$neutral-very-dark-blue: hsl(234, 12%, 34%);
+$neutral-greyish-blue: hsl(229, 6%, 66%);
+$neutral-very-light-grey: hsl(0, 0%, 98%);
+
+$font-weights: (
+	'extra-light': 200,
+	'regular': 400,
+	'semi-bold': 600
+);
+
+$tablet: 768px;
+$PC: 960px;
+$Desktop: 1200px;
